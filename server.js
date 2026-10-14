@@ -212,3 +212,175 @@ What is GET? Retrieves records.
 What is PUT? Updates an existing record.
 What is DELETE? Removes a record.
 What is port 3000? The port used by the application server.
+
+
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Experiment: Student Registration using AngularJS
+1. Aim
+To develop a Student Registration application using AngularJS to add student details and display them in a table.
+2. Software Requirements
+Operating System: Windows
+Editor: Visual Studio Code
+Browser: Google Chrome
+Technology: HTML, CSS, AngularJS
+3. Procedure
+Open Visual Studio Code and create a new HTML file named student.html.
+Create a student registration form with Name and Department fields.
+Apply CSS to style the form and table.
+Include the AngularJS library in the HTML file.
+Use ng-model to collect student details.
+Use ng-submit to call the add() function.
+Use students.push() to add student details to the array.
+Use ng-repeat to display student details in a table.
+Save the file and open it in Google Chrome.
+Enter student details and click Add Student to display them in the table.
+4. Program
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<title>Student Registration</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<style>
+body{font-family:Arial;background:#eaf2ff;padding:30px}
+.box{background:white;padding:20px;border-radius:10px}
+input,button{padding:10px;margin:5px}
+button{background:blue;color:white;border:0}
+table{width:100%;margin-top:20px;border-collapse:collapse}
+th,td{padding:10px;border:1px solid #ccc}
+</style>
+</head>
+<body ng-controller="myCtrl">
+<div class="box">
+<h2>Student Registration</h2>
+<form ng-submit="add()">
+<input ng-model="name" placeholder="Enter Name" required>
+<input ng-model="dept" placeholder="Department" required>
+<button type="submit">Add Student</button>
+</form>
+<table>
+<tr><th>Name</th><th>Department</th></tr>
+<tr ng-repeat="s in students">
+<td>{{s.name}}</td>
+<td>{{s.dept}}</td>
+</tr>
+</table>
+</div>
+<script>
+var app=angular.module("myApp",[]);
+app.controller("myCtrl",function($scope){
+$scope.students=[];
+$scope.add=function(){
+$scope.students.push({name:$scope.name,dept:$scope.dept});
+$scope.name="";
+$scope.dept="";
+};
+});
+</script>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+Selenium WebDriver Practical
+Experiment: Automate Google Search using Selenium WebDriver.
+
+1. Aim
+To automate a web browser using Selenium WebDriver and verify the title of a web page.
+
+2. Software requirements
+Java JDK
+Eclipse IDE or VS Code
+Google Chrome
+Selenium WebDriver library
+ChromeDriver, if required by the Selenium setup
+
+3. Procedure
+Open Eclipse IDE and create a Java project named SeleniumLab.
+Add the Selenium WebDriver library to the project.
+Create a Java class named SeleniumTest.
+Import WebDriver and ChromeDriver packages.
+Create a Chrome browser object using new ChromeDriver().
+Open a website using driver.get().
+Get the page title using driver.getTitle().
+Display the title and close the browser using driver.quit().
+
+4. Program
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+public class SeleniumTest {
+    public static void main(String[] args) {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://www.selenium.dev");
+        System.out.println("Title: " + driver.getTitle());
+        driver.quit();
+    }
+}
+This follows the basic Java WebDriver pattern in Selenium's official documentation. 
+Selenium
++1
+5. How to execute
+Selenium library project-la add pannirukkanum.
+Java file-ah save pannu.
+SeleniumTest.java-la right-click panni Run As → Java Application select pannu.
+Chrome browser open aagum.
+Selenium website load aagum; title console-la print aagum.
+Browser close aagum.
+Sample Output
+Title: Selenium
+Browser opens, loads the page, and closes automatically.
+6. Result
+Thus, the website was successfully opened and its title was verified using Selenium WebDriver.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  XML DTD Practical
+Experiment: Create and validate an XML document using DTD.
+
+1. Aim
+To create an XML document for student details and validate it using a Document Type Definition (DTD).
+
+2. Software requirements
+Visual Studio Code / Notepad
+Web browser or XML validator
+
+3. Procedure
+Open VS Code and create a file named student.xml.
+Define the student details using XML tags.
+Create a DTD file named student.dtd.
+Define the permitted elements and their order in the DTD.
+Link the DTD file to the XML document.
+Save both files in the same folder.
+Validate the XML document using an XML validator.
+
+4. Program 1 — student.xml
+
+<?xml version="1.0"?>
+<!DOCTYPE student SYSTEM "student.dtd">
+
+<student>
+    <name>Bala</name>
+    <department>IT</department>
+    <age>20</age>
+</student>
+
+5. Program 2 — student.dtd
+
+<!ELEMENT student (name, department, age)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+
+6. Explanation — Tanglish
+<!DOCTYPE student SYSTEM "student.dtd"> — XML document DTD file-ah connect pannum.
+<!ELEMENT student (name, department, age)> — Student-kulla indha moonu elements-um indha order-la irukkanum.
+#PCDATA — Element-kulla text content irukkum.
+SYSTEM "student.dtd" — Separate DTD file use pannrom.
+Important: XML-la element order change pannina, DTD validation fail aagalam.
+7. Output
+XML document valid-ah irundha validator:
+XML document is valid.
+nu indicate pannum. XML file-ah browser-la open pannina data display aagalaam; aana browser-la open pannuradhu mattum DTD validation confirm pannaadhu.
