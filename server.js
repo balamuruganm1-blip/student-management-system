@@ -374,13 +374,24 @@ Validate the XML document using an XML validator.
 <!ELEMENT department (#PCDATA)>
 <!ELEMENT age (#PCDATA)>
 
-6. Explanation — Tanglish
-<!DOCTYPE student SYSTEM "student.dtd"> — XML document DTD file-ah connect pannum.
-<!ELEMENT student (name, department, age)> — Student-kulla indha moonu elements-um indha order-la irukkanum.
-#PCDATA — Element-kulla text content irukkum.
-SYSTEM "student.dtd" — Separate DTD file use pannrom.
-Important: XML-la element order change pannina, DTD validation fail aagalam.
-7. Output
-XML document valid-ah irundha validator:
-XML document is valid.
-nu indicate pannum. XML file-ah browser-la open pannina data display aagalaam; aana browser-la open pannuradhu mattum DTD validation confirm pannaadhu.
+Step 1: Open the terminal
+In VS Code, click Terminal → New Terminal.
+Step 2: Install the library
+Run this command once:
+python -m pip install lxml
+Step 3: Check XML syntax
+python -c "import xml.etree.ElementTree as E; E.parse('student.xml'); print('XML syntax is correct')"
+Expected output:
+XML syntax is correct
+This checks XML syntax only, not DTD validity.
+Step 4: Validate XML against DTD
+Run this command:
+python -c "from lxml import etree; parser=etree.XMLParser(dtd_validation=True); etree.parse('student.xml', parser); print('DTD validation successful - XML is valid')"
+Expected output:
+DTD validation successful - XML is valid
+Important: Both files must be saved in the same folder, and the filenames must match exactly.
+7. Sample Output
+XML syntax is correct
+DTD validation successful - XML is valid
+8. Result
+Thus, an XML document containing student details was created and successfully validated against a DTD.
